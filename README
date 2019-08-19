@@ -1,0 +1,9 @@
+Steps to launch the test:
+1. clone repo https://github.com/VladimirSokurenko/salesforce_selenium_task
+2. open the project
+3. in the opened project open pom.xml file
+4. click 'Import Changer' link
+5. open "WebDriverSetUp" class which is located src/test/java/webDriverSetUp package
+6. change location of the 'chromedriver' by passing location_of_the_project_on_your_machine/salesforce_selenium_test
+value to System.setProperty()
+7. right click on the "TestCases" class, choose "RunTestCases" - browser should open and start executing tests

@@ -12,10 +12,6 @@ import java.io.FileReader;
 
 public class HomePage {
 
-    /** this class describes needed element of the homepage
-     * and actions(methods) that will be performed against it
-     */
-
     WebDriver driver;
 
 
