@@ -5,16 +5,24 @@ import org.testng.annotations.Test;
 import pageObject.*;
 import webDriverSetUp.WebDriverSetUp;
 
+import java.io.IOException;
+
 
 public class TestCases extends WebDriverSetUp {
 
     /** this class describes test cases
-     * Test-case 1: 'Import 5 tables to google drive'
+     * Test-case 1: 'Import 5 files to google drive'
      * steps:
      * 1. open 'geminid' application
      * 2. check if application opened
      * 3. click 'LOGIN' button
      * 4. click 'PRODUCTION' button
+     * 5. fill in login form and click 'Login' button
+     * 6. click 'Allow' button
+     * 7. click 'Data Explorer' block
+     * 8. select five documents
+     * 9. import to google drive
+     * 10. verify if documents imported
      */
 
     Faker faker = new Faker();
@@ -29,7 +37,7 @@ public class TestCases extends WebDriverSetUp {
 
 
     @Test(description = "Import 5 tables to google drive")
-    public void importTablesToGoogleDrive(){
+    public void importTablesToGoogleDrive() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
         SalesForceLoginPage salesForceLoginPage = new SalesForceLoginPage(driver);
         AllowAccessPage allowAccessPage = new AllowAccessPage(driver);
@@ -53,7 +61,7 @@ public class TestCases extends WebDriverSetUp {
         dataExplorerPage.selectLastUsedAppFile();
         dataExplorerPage.selectSolutionsFile();
         dataExplorerPage.selectAccountsFile();
-        dataExplorerPage.selectCompaignsFile();
+        dataExplorerPage.selectCampaignsFile();
         dataExplorerPage.selectContactsFile();
         dataExplorerPage.clickExportSelectionButton();
         dataExplorerExportPage.clickGoogleButton();
@@ -68,7 +76,11 @@ public class TestCases extends WebDriverSetUp {
         dataExplorerExportPage.clickOkModalButton();
         dataExplorerSubmittedPage.clickViewFilesButton();
         dataExplorerSubmittedPage.clickGoToMyFolderButton();
+        googleDriveFolderPage.switchToGoogleDriveWindow();
         googleDriveFolderPage.checkAccountDocumentUploaded();
-
+        googleDriveFolderPage.checkCampaigngDocumentUploaded();
+        googleDriveFolderPage.checkContactDocumentUploaded();
+        googleDriveFolderPage.checkSolutionDocumentUploaded();
+        googleDriveFolderPage.checkUserAppInfoDocumentUploaded();
     }
 }

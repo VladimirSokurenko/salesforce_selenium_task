@@ -24,10 +24,10 @@ public class WebDriverSetUp {
     public void openApplication(String url){ driver.get(url); }
 
 
-//    @AfterMethod
-//    public void exitBrowser(){
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void exitBrowser(){
+        driver.quit();
+    }
 
 
 

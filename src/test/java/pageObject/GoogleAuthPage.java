@@ -43,8 +43,9 @@ public class GoogleAuthPage {
                 .click();
     }
 
-    public void clickAllowDriveAccessButton(){
+    public void clickAllowDriveAccessButton() throws InterruptedException{
         WebDriverWait wait = new WebDriverWait(driver, 15);
+        Thread.sleep(2000);
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,150)");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(allowDriveAccessButton)))
                 .click();

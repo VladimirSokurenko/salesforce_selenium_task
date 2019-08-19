@@ -27,7 +27,7 @@ public class DataExplorerExportPage {
     }
 
     public void clickGoogleRadioButton(){
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         WebElement googleRadioBtn = driver.findElement(By.xpath(googleRadioButton));
         wait.until(ExpectedConditions.visibilityOf(googleRadioBtn))
                 .click();

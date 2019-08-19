@@ -15,13 +15,13 @@ public class DataExplorerSubmittedPage {
     String goToMyFolderButton = "//button[@class='btn btn-main']";
 
     public void clickViewFilesButton(){
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(viewFilesButton))))
                 .click();
     }
 
     public void clickGoToMyFolderButton(){
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(goToMyFolderButton))))
                 .click();
     }

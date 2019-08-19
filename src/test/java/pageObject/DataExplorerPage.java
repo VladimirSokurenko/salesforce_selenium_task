@@ -15,7 +15,7 @@ public class DataExplorerPage {
     String lastUsedAppFile = "//tr[9]//td[3]";
     String solutionsFile = "//tr[8]//td[3]";
     String accountsFile = "//tr[7]//td[3]";
-    String compaignsFile = "//tr[6]//td[3]";
+    String campaignsFile = "//tr[6]//td[3]";
     String contactsFile = "//tr[5]//td[3]";
     String exportSelectionButton = "export_selection_btn";
 
@@ -37,9 +37,9 @@ public class DataExplorerPage {
                 .click();
     }
 
-    public void selectCompaignsFile(){
+    public void selectCampaignsFile(){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(compaignsFile))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(campaignsFile))))
                 .click();
     }
 
