@@ -11,18 +11,15 @@ public class DataExplorerSubmittedPage {
 
     public DataExplorerSubmittedPage(WebDriver driver){ this.driver=driver; }
 
-    String viewFilesButton = "//button[@class='btn btn-sm export-button']";
-    String goToMyFolderButton = "//button[@class='btn btn-main']";
-
-    public void clickViewFilesButton(){
+    public void clickViewFilesButton(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(viewFilesButton))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))))
                 .click();
     }
 
-    public void clickGoToMyFolderButton(){
+    public void clickGoToMyFolderButton(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(goToMyFolderButton))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))))
                 .click();
     }
 }

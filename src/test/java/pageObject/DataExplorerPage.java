@@ -1,6 +1,5 @@
 package pageObject;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,46 +11,39 @@ public class DataExplorerPage {
 
     public DataExplorerPage(WebDriver driver){ this.driver = driver; }
 
-    String lastUsedAppFile = "//tr[9]//td[3]";
-    String solutionsFile = "//tr[8]//td[3]";
-    String accountsFile = "//tr[7]//td[3]";
-    String campaignsFile = "//tr[6]//td[3]";
-    String contactsFile = "//tr[5]//td[3]";
-    String exportSelectionButton = "export_selection_btn";
-
-    public void selectLastUsedAppFile(){
+    public void selectLastUsedAppFile(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(lastUsedAppFile))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))))
                 .click();
     }
 
-    public void selectSolutionsFile(){
+    public void selectSolutionsFile(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(solutionsFile))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))))
                 .click();
     }
 
-    public void selectAccountsFile(){
+    public void selectAccountsFile(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(accountsFile))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))))
                 .click();
     }
 
-    public void selectCampaignsFile(){
+    public void selectCampaignsFile(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(campaignsFile))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))))
                 .click();
     }
 
-    public void selectContactsFile(){
+    public void selectContactsFile(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(contactsFile))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))))
                 .click();
     }
 
-    public void clickExportSelectionButton(){
+    public void clickExportSelectionButton(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(exportSelectionButton))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(locator))))
                 .click();
     }
 }

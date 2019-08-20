@@ -11,11 +11,9 @@ public class AllowAccessPage {
 
     public AllowAccessPage(WebDriver driver){ this.driver = driver; }
 
-    String allowButton = "oaapprove";
-
-    public void clickAllowButton(){
+    public void clickAllowButton(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(allowButton))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(locator))))
                 .click();
     }
 

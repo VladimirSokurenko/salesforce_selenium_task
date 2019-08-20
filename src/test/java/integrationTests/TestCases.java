@@ -1,11 +1,13 @@
 package integrationTests;
 
 import com.github.javafaker.Faker;
+import csvFileReader.CsvFileReader;
 import org.testng.annotations.Test;
 import pageObject.*;
 import webDriverSetUp.WebDriverSetUp;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 
 public class TestCases extends WebDriverSetUp {
@@ -28,16 +30,14 @@ public class TestCases extends WebDriverSetUp {
     Faker faker = new Faker();
     String folderNameText = faker.firstName();
 
+    CsvFileReader csvFileReader = new CsvFileReader();
 
     final static String BASE_URL = "https://www.geminidsystems.com";
-    final static String USERNAME = "vaguard@van.com";
-    final static String PASSWORD = "123123qwe";
-    final static String EMAIL = "userwantwtorenttwo@gmail.com";
-    final static String EMAIL_PASSWORD = "12345qwe";
-
 
     @Test(description = "Import 5 tables to google drive")
-    public void importTablesToGoogleDrive() throws InterruptedException {
+    public void importTablesToGoogleDrive() throws Exception {
+        HashMap<String,String> testData = csvFileReader.getTestData();
+
         HomePage homePage = new HomePage(driver);
         SalesForceLoginPage salesForceLoginPage = new SalesForceLoginPage(driver);
         AllowAccessPage allowAccessPage = new AllowAccessPage(driver);
@@ -49,38 +49,38 @@ public class TestCases extends WebDriverSetUp {
         GoogleDriveFolderPage googleDriveFolderPage = new GoogleDriveFolderPage(driver);
 
         openApplication(BASE_URL);
-        homePage.verifyLogo();
-        homePage.clickLoginButton();
-        homePage.clickProductionInstance();
-        salesForceLoginPage.checkUsernameField();
-        salesForceLoginPage.fillInUsernameField(USERNAME);
-        salesForceLoginPage.fillInPasswordField(PASSWORD);
-        salesForceLoginPage.clickLoginButton();
-        allowAccessPage.clickAllowButton();
-        gemenidAppPage.clickDataExplorerBlock();
-        dataExplorerPage.selectLastUsedAppFile();
-        dataExplorerPage.selectSolutionsFile();
-        dataExplorerPage.selectAccountsFile();
-        dataExplorerPage.selectCampaignsFile();
-        dataExplorerPage.selectContactsFile();
-        dataExplorerPage.clickExportSelectionButton();
-        dataExplorerExportPage.clickGoogleButton();
-        googleAuthPage.fillEmailFiled(EMAIL);
-        googleAuthPage.clickNextButton();
-        googleAuthPage.fillPasswordFiled(EMAIL_PASSWORD);
-        googleAuthPage.clickPasswordNextButton();
-        googleAuthPage.clickAllowDriveAccessButton();
-        dataExplorerExportPage.clickGoogleRadioButton();
-        dataExplorerExportPage.changeFolderName(folderNameText);
-        dataExplorerExportPage.clickSubmitButton();
-        dataExplorerExportPage.clickOkModalButton();
-        dataExplorerSubmittedPage.clickViewFilesButton();
-        dataExplorerSubmittedPage.clickGoToMyFolderButton();
+        homePage.verifyLogo(testData.get("homepage logo"));
+        homePage.clickLoginButton(testData.get("login button"));
+        homePage.clickProductionInstance(testData.get("production button"));
+        salesForceLoginPage.checkUsernameField(testData.get("username field"));
+        salesForceLoginPage.fillInUsernameField(testData.get("username"), testData.get("username field"));
+        salesForceLoginPage.fillInPasswordField(testData.get("password"), testData.get("password field"));
+        salesForceLoginPage.clickLoginButton(testData.get("logIn button"));
+        allowAccessPage.clickAllowButton(testData.get("approve button"));
+        gemenidAppPage.clickDataExplorerBlock(testData.get("data explorer block"));
+        dataExplorerPage.selectLastUsedAppFile(testData.get("last used app"));
+        dataExplorerPage.selectSolutionsFile(testData.get("solutions"));
+        dataExplorerPage.selectAccountsFile(testData.get("accounts"));
+        dataExplorerPage.selectCampaignsFile(testData.get("campaigns"));
+        dataExplorerPage.selectContactsFile(testData.get("contacts"));
+        dataExplorerPage.clickExportSelectionButton(testData.get("export selections button"));
+        dataExplorerExportPage.clickGoogleButton(testData.get("google button"));
+        googleAuthPage.fillEmailFiled(testData.get("email"), testData.get("email field"));
+        googleAuthPage.clickNextButton(testData.get("next button"));
+        googleAuthPage.fillPasswordFiled(testData.get("email password"), testData.get("email password filed"));
+        googleAuthPage.clickPasswordNextButton(testData.get("finish button"));
+        googleAuthPage.clickAllowDriveAccessButton(testData.get("allow access button"));
+        dataExplorerExportPage.clickGoogleRadioButton(testData.get("radio button google"));
+        dataExplorerExportPage.changeFolderName(folderNameText, testData.get("folder name field"));
+        dataExplorerExportPage.clickSubmitButton(testData.get("submit button"));
+        dataExplorerExportPage.clickOkModalButton(testData.get("OK modal button"));
+        dataExplorerSubmittedPage.clickViewFilesButton(testData.get("view files button"));
+        dataExplorerSubmittedPage.clickGoToMyFolderButton(testData.get("go to folder button"));
         googleDriveFolderPage.switchToGoogleDriveWindow();
-        googleDriveFolderPage.checkAccountDocumentUploaded();
-        googleDriveFolderPage.checkCampaigngDocumentUploaded();
-        googleDriveFolderPage.checkContactDocumentUploaded();
-        googleDriveFolderPage.checkSolutionDocumentUploaded();
-        googleDriveFolderPage.checkUserAppInfoDocumentUploaded();
+        googleDriveFolderPage.checkAccountDocumentUploaded(testData.get("accounts file"));
+        googleDriveFolderPage.checkCampaignDocumentUploaded(testData.get("campaign file"));
+        googleDriveFolderPage.checkContactDocumentUploaded(testData.get("contacts file"));
+        googleDriveFolderPage.checkSolutionDocumentUploaded(testData.get("solutions file"));
+        googleDriveFolderPage.checkUserAppInfoDocumentUploaded(testData.get("last used app file"));
     }
 }

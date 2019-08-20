@@ -2,9 +2,6 @@ package pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.util.Date;
 
@@ -13,14 +10,6 @@ public class GoogleDriveFolderPage {
     WebDriver driver;
 
     public GoogleDriveFolderPage(WebDriver driver){ this.driver = driver; }
-
-    String accountFile = "//div[text()='Account.zip']";
-    String campaignFile = "//div[text()='Campaign.zip']";
-    String contactFile = "//div[text()='Contact.zip']";
-    String solutionFile = "//div[text()='Solution.zip']";
-    String userAppInfoFile = "//div[text()='UserAppInfo.zip']";
-
-
 
     public boolean verifyFilePresent(String locator){
         try {
@@ -37,14 +26,13 @@ public class GoogleDriveFolderPage {
         }
     }
 
-    public void checkAccountDocumentUploaded(){
-       // switchToNewWindow();
+    public void checkAccountDocumentUploaded(String locator){
         Date date = new Date();
         long currentTime = date.getTime();
         final int TIMEOUT = 10000;
         long targetTime = currentTime + TIMEOUT;
         while(currentTime < targetTime) {
-            if (verifyFilePresent(accountFile)) {
+            if (verifyFilePresent(locator)) {
                 break;
             } else {
                 driver.navigate().refresh();
@@ -52,14 +40,13 @@ public class GoogleDriveFolderPage {
         }
     }
 
-    public void checkCampaigngDocumentUploaded(){
-        //switchToNewWindow();
+    public void checkCampaignDocumentUploaded(String locator){
         Date date = new Date();
         long currentTime = date.getTime();
         final int TIMEOUT = 10000;
         long targetTime = currentTime + TIMEOUT;
         while(currentTime < targetTime) {
-            if (verifyFilePresent(campaignFile)) {
+            if (verifyFilePresent(locator)) {
                 break;
             } else {
                 driver.navigate().refresh();
@@ -67,14 +54,13 @@ public class GoogleDriveFolderPage {
         }
     }
 
-    public void checkContactDocumentUploaded(){
-        //switchToNewWindow();
+    public void checkContactDocumentUploaded(String locator){
         Date date = new Date();
         long currentTime = date.getTime();
         final int TIMEOUT = 10000;
         long targetTime = currentTime + TIMEOUT;
         while(currentTime < targetTime) {
-            if (verifyFilePresent(contactFile)) {
+            if (verifyFilePresent(locator)) {
                 break;
             } else {
                 driver.navigate().refresh();
@@ -82,14 +68,13 @@ public class GoogleDriveFolderPage {
         }
     }
 
-    public void checkSolutionDocumentUploaded(){
-        //switchToNewWindow();
+    public void checkSolutionDocumentUploaded(String locator){
         Date date = new Date();
         long currentTime = date.getTime();
         final int TIMEOUT = 10000;
         long targetTime = currentTime + TIMEOUT;
         while(currentTime < targetTime) {
-            if (verifyFilePresent(solutionFile)) {
+            if (verifyFilePresent(locator)) {
                 break;
             } else {
                 driver.navigate().refresh();
@@ -97,14 +82,13 @@ public class GoogleDriveFolderPage {
         }
     }
 
-    public void checkUserAppInfoDocumentUploaded(){
-        //switchToNewWindow();
+    public void checkUserAppInfoDocumentUploaded(String locator){
         Date date = new Date();
         long currentTime = date.getTime();
         final int TIMEOUT = 10000;
         long targetTime = currentTime + TIMEOUT;
         while(currentTime < targetTime) {
-            if (verifyFilePresent(userAppInfoFile)) {
+            if (verifyFilePresent(locator)) {
                 break;
             } else {
                 driver.navigate().refresh();

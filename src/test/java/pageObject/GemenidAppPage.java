@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+
 
 public class GemenidAppPage {
 
@@ -12,15 +12,10 @@ public class GemenidAppPage {
 
     public GemenidAppPage(WebDriver driver){ this.driver = driver; }
 
-    String dataExplorerBlock = "//div[@class='page-content-wrapper']//div[2]//a[1]//img[1]";
-
-
-    public void clickDataExplorerBlock(){
+    public void clickDataExplorerBlock(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(dataExplorerBlock))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))))
                 .click();
     }
-
-
 
 }

@@ -11,30 +11,26 @@ public class SalesForceLoginPage {
 
     public SalesForceLoginPage(WebDriver driver){ this.driver = driver; }
 
-    String salesForceLoginButton = "Login";
-    String usernameField = "username";
-    String passwordFiled = "password";
-
-    public void checkUsernameField(){
+    public void checkUsernameField(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(usernameField))));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(locator))));
     }
 
-    public void fillInUsernameField(String username){
+    public void fillInUsernameField(String username, String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(usernameField))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(locator))))
                 .sendKeys(username);
     }
 
-    public void fillInPasswordField(String password){
+    public void fillInPasswordField(String password, String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(passwordFiled))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(locator))))
                 .sendKeys(password);
     }
 
-    public void clickLoginButton(){
+    public void clickLoginButton(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(salesForceLoginButton))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(locator))))
                 .click();
     }
 

@@ -6,4 +6,5 @@ Steps to launch the test:
 5. open "WebDriverSetUp" class which is located src/test/java/webDriverSetUp package
 6. change location of the 'chromedriver' by passing location_of_the_project_on_your_machine/salesforce_selenium_test
 value to System.setProperty()
-7. right click on the "TestCases" class, choose "RunTestCases" - browser should open and start executing tests
+7. open CsvFileReader and change location of the .csv file as same as in step number 6
+8. right click on the "TestCases" class, choose "RunTestCases" - browser should open and start executing tests

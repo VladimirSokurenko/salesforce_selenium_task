@@ -1,6 +1,5 @@
 package pageObject;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,44 +13,38 @@ public class DataExplorerExportPage {
 
     public DataExplorerExportPage(WebDriver driver){ this.driver = driver; }
 
-    String googleButton = "google_auth_btn";
-    String googleRadioButton = "//span[2]//div[1]//i[1]";
-    String folderNameField = "//input[@placeholder='Enter Folder Name']";
-    String submitButton = "submit_btn";
-    String okModalButton = "//button[@class='btn btn-main']";
-
-    public void clickGoogleButton(){
+    public void clickGoogleButton(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(googleButton))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(locator))))
                 .click();
     }
 
-    public void clickGoogleRadioButton(){
+    public void clickGoogleRadioButton(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 30);
-        WebElement googleRadioBtn = driver.findElement(By.xpath(googleRadioButton));
+        WebElement googleRadioBtn = driver.findElement(By.xpath(locator));
         wait.until(ExpectedConditions.visibilityOf(googleRadioBtn))
                 .click();
         Assert.assertTrue(googleRadioBtn.isEnabled());
     }
 
-    public void changeFolderName(String name){
+    public void changeFolderName(String name, String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        WebElement folderField = driver.findElement(By.xpath(folderNameField));
+        WebElement folderField = driver.findElement(By.xpath(locator));
         wait.until(ExpectedConditions.visibilityOf(folderField))
                 .clear();
         wait.until(ExpectedConditions.visibilityOf(folderField))
                 .sendKeys(name);
     }
 
-    public void clickSubmitButton(){
+    public void clickSubmitButton(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(submitButton))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(locator))))
                 .click();
     }
 
-    public void clickOkModalButton(){
+    public void clickOkModalButton(String locator){
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(okModalButton))))
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))))
                 .click();
     }
 }
